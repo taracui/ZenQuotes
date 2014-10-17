@@ -1,5 +1,8 @@
 <html>
-<head><!-- Latest compiled and minified CSS -->
+<head>
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js">
+	</script>
+	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
 	<!-- Optional theme -->
@@ -7,10 +10,38 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+	<link href='http://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet' type='text/css'>
+
+	<script>
+		$( document ).ready(function(){
+
+			renderQuote=function(data){
+				$quoteEl = $(".js-quote");
+				$quoteEl.html(data);
+			}
+
+			renderQuote();
+			$(".new-quote").click(function(){
+				$.get("https://api.github.com/zen", function(data){
+					renderQuote(data)
+				})
+			})
+
+		})
+			
+
+	</script>
+	<style type="text/css">
+	body { 
+		text-align: center;
+		font-family: 'Cinzel', serif;
+	}
+	</style>
 </head>
 
 <body class="container">
-	<h1>Zen Quotes Page</h1>
+	<h1>Zen Quotes</h1>
 	<div class="js-quote well well-sm">
 	This is where the quote will go!
 	</div>
